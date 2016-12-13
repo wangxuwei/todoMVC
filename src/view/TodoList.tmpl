@@ -1,0 +1,20 @@
+<script id="TodoList" type="text/html">
+	<div class="TodoList">
+		<div class="add-con">
+			<input type="text" name="name" class="form-control task-name" placeholder="Enter task name" />
+			<div class="btn btn-primary btn-add">Add Task</div>
+		</div>
+		<div class="items-con">
+			
+		</div>
+	</div>
+</script>
+
+<script id="TodoList-items" type="text/html">
+	{{#each items}}
+		<div class="item" data-entity-id="{{id}}">
+			<span class="btn btn-danger btn-delete">Delete</span>
+			<span class="name">{{name}}</span>
+		</div>
+	{{/each}}
+</script>

@@ -1,0 +1,43 @@
+@import "../pcss/utils.pcss";
+
+.TodoList{
+	.add-con{
+		margin-top: 32px;
+		input{
+			width: 300px;
+		}
+		.btn-add{
+			margin-top: 16px;
+		}
+	}
+
+	.items-con{
+		margin-top: 24px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		&:empty{
+			border-top:none;
+		}
+		.item{
+			border-top: 1px solid #ccc;
+			&:first-child{
+				border-top: none;
+			}
+			@mixin clearfix;
+			.name{
+				margin-left: 16px;
+				display:block;
+				line-height: 32px;
+				margin-right: 160px;
+			}
+			.btn{
+				float:right;
+				height: 24px;
+				line-height: 22px;
+				padding: 0px 4px;
+				margin: 4px 16px;
+				text-align:center;
+			}
+		}
+	}
+}

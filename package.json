@@ -1,0 +1,40 @@
+{
+  "name": "todoMVC",
+  "version": "1.0.0",
+  "description": "todoMVC Application",
+  "main": "start.js",
+  "dependencies": {
+    "d3": "^3.5.17",
+    "mvdom": "^0.3.1"
+  },
+  "devDependencies": {
+    "async6": "^0.1.2",
+    "autoprefixer": "^6.3.6",
+    "browserify": "^13.1.0",
+    "del": "^2.2.0",
+    "fs": "^0.0.2",
+    "fs-extra": "^0.30.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-download": "0.0.1",
+    "gulp-ext-replace": "^0.3.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-sourcemaps": "*",
+    "hapi": "^13.2.1",
+    "hbsp": "*",
+    "inert": "^3.2.0",
+    "path": "^0.12.7",
+    "postcss-cssnext": "^2.5.2",
+    "postcss-import": "^8.1.2",
+    "postcss-mixins": "^4.0.1",
+    "postcss-nested": "^1.0.0",
+    "postcss-simple-vars": "^1.2.0",
+    "postcss-value-parser": "*",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": ""
+}
