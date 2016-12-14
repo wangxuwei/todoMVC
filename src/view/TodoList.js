@@ -60,7 +60,8 @@ d.register("TodoList",{
 function refreshItems(){
     var view = this;
     var conEl = d.first(view.el, ".items-con");
-    var data = taskHub.getData();
-    var html = render("TodoList-items", {items: data});
-    conEl.innerHTML = html;
+    taskHub.getData().then(function(data){
+        var html = render("TodoList-items", {items: data});
+        conEl.innerHTML = html;
+    });
 }

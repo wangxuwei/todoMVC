@@ -31,7 +31,9 @@ taskHub.sub("Task", "delete", function(data, info){
 });
 
 taskHub.getData = function(){
-	return getTasks();
+	return new Promise(function(resolve, fail){
+		resolve(getTasks());
+	});
 }
 
 function getSeq(){
