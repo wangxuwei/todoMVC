@@ -1,8 +1,6 @@
 var d = mvdom;
 
 var taskHub = d.hub("taskHub");
-var _tasks = [];
-var _id = 1;
 
 // Subcribe to a topic 
 // sub(topic,[labels,] handlerFunction, namespace) 
@@ -13,28 +11,47 @@ taskHub.sub("Task",function(data, info){
 // or can subscribe only to the create label (here info.label will always be "create") 
 taskHub.sub("Task", "create", function(data, info){
 	data.id = getSeq();
-	_tasks.push(data);
+	var tasks = getTasks();
+	tasks.push(data);
+	setTasks(tasks);
 });
 
 // or can subscribe only to the create label (here info.label will always be "create") 
 taskHub.sub("Task", "delete", function(data, info){
 	var id = data;
+	var tasks = getTasks();
 	if(id){
-		for(var i = 0; i < _tasks.length; i++){
-			if(_tasks[i].id == id){
-				_tasks.splice(i, 1);
+		for(var i = 0; i < tasks.length; i++){
+			if(tasks[i].id == id){
+				tasks.splice(i, 1);
 			}
 		}
 	}
+	setTasks(tasks);
 });
 
 taskHub.getData = function(){
-	return _tasks;
+	return getTasks();
 }
 
 function getSeq(){
-	return _id++;
+	var seq = localStorage.tasks_seq || 1;
+	seq = seq * 1;
+	localStorage.tasks_seq = (seq + 1) + "";
+	return seq;
 }
 
+function getTasks(){
+	var tasksStr = localStorage.tasks;
+	var tasks = [];
+	if(tasksStr){
+		tasks = JSON.parse(tasksStr);
+	}
+	return tasks;
+}
+
+function setTasks(data){
+	localStorage.tasks = JSON.stringify(data);
+}
 
 window.taskHub = taskHub;
