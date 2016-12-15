@@ -1,3 +1,4 @@
+var app = window.app || {};
 var d = mvdom;
 
 var taskHub = d.hub("taskHub");
@@ -10,50 +11,18 @@ taskHub.sub("Task",function(data, info){
 
 // or can subscribe only to the create label (here info.label will always be "create") 
 taskHub.sub("Task", "create", function(data, info){
-	data.id = getSeq();
-	var tasks = getTasks();
-	tasks.push(data);
-	setTasks(tasks);
+	data = data || {};
+	return app.doPost("/task/create", {entity: JSON.stringify(data)});
 });
 
 // or can subscribe only to the create label (here info.label will always be "create") 
 taskHub.sub("Task", "delete", function(data, info){
-	var id = data;
-	var tasks = getTasks();
-	if(id){
-		for(var i = 0; i < tasks.length; i++){
-			if(tasks[i].id == id){
-				tasks.splice(i, 1);
-			}
-		}
-	}
-	setTasks(tasks);
+	return app.doPost("/task/delete", {id: data});
 });
 
-taskHub.getData = function(){
-	return new Promise(function(resolve, fail){
-		resolve(getTasks());
-	});
+taskHub.list = function(){
+	return app.doGet("/task/list");
 }
 
-function getSeq(){
-	var seq = localStorage.tasks_seq || 1;
-	seq = seq * 1;
-	localStorage.tasks_seq = (seq + 1) + "";
-	return seq;
-}
-
-function getTasks(){
-	var tasksStr = localStorage.tasks;
-	var tasks = [];
-	if(tasksStr){
-		tasks = JSON.parse(tasksStr);
-	}
-	return tasks;
-}
-
-function setTasks(data){
-	localStorage.tasks = JSON.stringify(data);
-}
 
 window.taskHub = taskHub;
