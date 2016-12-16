@@ -7,20 +7,42 @@ d.register("MainView",{
         return render("MainView");
     }, 
 
-    // (optional) init() will be called after the component element is created
-    // but before it is added to the screen (i.e. added to the parent)
-    init: function(data, config){
-        var view = this; // best practice
-        // if return a Promise, the flow will wait until the promise is resolved
-    }, 
-
     // (optional) postDisplay() will be called after the component element is added to the dom
     // and in another event (used a setTimeout 0). 
     // Best Practice: This is a good place to add bindings that are not related to UI layout, or need to be done
     // after the component is displayed
     postDisplay: function(data, config){
+        var view = this;
         // some non UI layout related, or actions that need to be performed after the component is displayed. 
-        d.display("TodoList", d.first(".MainView"));
+        var username = app.pref.get("username");
+        d.empty(d.first(view.el, ".MainView-content"));
+        if(username){
+            showMainView.call(view);
+        }else{
+            showLoginView.call(view);
+        }
+    },
+
+    events: {
+        "click; .log-off": function(){
+            var view = this;
+            app.pref.set("username", "");
+            window.location.reload(true);
+        }
     }
 
 });
+
+
+function showMainView(){
+    var view = this;
+    d.display("TodoList", d.first(view.el, ".MainView-content"));
+    logOffEl.style.display = 'block';
+}
+
+function showLoginView(){
+    var view = this;
+    d.display("LoginView", d.first(view.el, ".MainView-content"));
+    var logOffEl = d.first(".log-off");
+    logOffEl.style.display = 'none';
+}

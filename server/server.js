@@ -104,6 +104,7 @@ function initServer(){
 	});
 
 	// bind APIs
+	this.load(require('./rest/rest-common.js'));
 	this.load(require('./rest/rest-task.js'));
 }
 // --------- /App Private Methods --------- //

@@ -1,0 +1,131 @@
+@import "./utils.pcss";
+
+/* --------- btn --------- */
+button, .btn{
+	border-radius: 4px;
+	outline:none;
+	outline-offset: 0px;
+	font-size: $font-size-small;
+	font-weight: $font-weight-normal;
+	&.active{
+		border-color: transparent;
+		background: $btn-active-bg;
+		color: white;
+		box-shadow: none;
+		&:focus{
+			outline:none;
+			outline-offset: 0px;
+		}
+		&:hover{
+			border-color: transparent;
+		}
+	}
+	&:focus{
+		outline:none;
+		outline-offset: 0px;
+		border-color: transparent;
+	}
+	&:active{
+		border-color: transparent;
+		&:focus{
+			outline:none;
+			outline-offset: 0px;
+			border-color: transparent;
+		}
+	}
+	&[disabled], &.disabled{
+		color:$btn-disabled-txt;
+		background: $btn-disabled-bg;
+		opacity: 1;
+	}
+}
+.btn-default{
+	background: $btn-default-bg;
+	border-color: transparent;
+	&:hover{
+		border-color: transparent;
+	}
+	&.active{
+		border-color: transparent;
+	}
+	&[disabled], &.disabled{
+		border-color: transparent;
+		background: $btn-disabled-bg;
+		opacity: 1;
+	}
+}
+
+.btn-primary{
+	border-color: $btn-active-bg;
+	background: $btn-active-bg;
+	color: $white;
+	&:hover{
+		border-color: #00aeef;
+	}
+	&[disabled], &.disabled{
+		color:$black-40;
+		border-color: #00aeef;
+		background: $black-20;
+		opacity: 1;
+	}
+}
+
+.btn-success{
+	border-color: transparent;
+	background: $success-normal;
+	color: $white;
+	&:hover{
+		border-color: transparent;
+	}
+	&[disabled], &.disabled{
+		color:$black-40;
+		border-color: transparent;
+		background: $black-20;
+		opacity: 1;
+	}
+}
+
+.btn-secondary{
+	font-size:$font-size-smaller;
+	background: $white;
+	color: $btn-active-bg;
+	border: 1px solid $btn-active-bg;
+	&:hover{
+		border-color: $primary-dark;
+		color: $primary-dark;
+	}
+	&:focus{
+		border-color: $primary-dark;
+		color: $primary-dark;
+	}
+	&[disabled], &.disabled{
+		font-size:$font-size-smaller;
+		color:$black-40;
+		border-color: $black-30;
+		background: $white;
+		opacity: 1;
+	}
+}
+
+.btn-danger-secondary{
+	font-size:$font-size-smaller;
+	background: $white;
+	color: $fail-normal;
+	border: 1px solid $fail-normal;
+	&:hover{
+		border-color: $fail-normal;
+		color: $fail-normal;
+	}
+	&:focus{
+		border-color: $fail-normal;
+		color: $fail-normal;
+	}
+	&[disabled], &.disabled{
+		font-size:$font-size-smaller;
+		color:$black-40;
+		border-color: $black-30;
+		background: $white;
+		opacity: 1;
+	}
+}
+/* --------- btn --------- */

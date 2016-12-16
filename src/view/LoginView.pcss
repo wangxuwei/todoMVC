@@ -1,0 +1,76 @@
+@import "../pcss/utils.pcss";
+
+.LoginView{
+	position: absolute;
+	top: 112px;
+	left: 50%;
+	margin-left: -152px;
+	width: 304px;
+	border: none;
+	box-shadow: 0 1px 3px 0 rgba(65,65,65,0.24),0 1px 2px 0 rgba(65,65,65,0.48);
+	border-radius: 4px;
+	.panel-primary{
+		margin: 0;
+		.panel-heading{
+			position: relative;
+			padding: 0;
+			cursor: pointer;
+			height: 40px;
+			background-color: #071b4a;
+			border-color: #071b4a;
+			border-radius: 0px;
+			.form-group{
+				margin: 0px;
+				padding-left: 50%;
+				.switch-text{
+					float:left;
+					font-size: 22px;
+					font-weight: 300;
+					color: #fff;
+					letter-spacing: 1.83px;
+					line-height: 29px;
+					margin-left: -41px;
+					margin-top: 6px;
+				}
+			}
+		}
+
+
+		.panel-body{
+			padding:0 16px;
+			.form-group{
+				margin-top: 16px;
+				margin-bottom: 0px;
+			}
+		}
+
+		.panel-footer{
+			border:none;
+			background-color: transparent;
+			padding: 0px;
+			clear: both;
+			&:after{
+				clear: both;
+				content: " ";
+				display: table;
+			}
+
+			.btn{
+				float:right;
+				margin: 16px;
+				margin-left: 0px;
+				font-weight: 300;
+			}
+
+			#error-msg{
+				font-size: 13px;
+				color: #d9534f;
+				font-weight: 300;
+				letter-spacing: 0.80px;
+				margin: 16px 0px 0px 16px;
+				width: 198px;
+				float:left;
+			}
+		}
+	}
+}

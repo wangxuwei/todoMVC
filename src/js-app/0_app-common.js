@@ -68,5 +68,5 @@ function encodeParams(object) {
 }
 
 module.exports = app;
-window.app = module.exports;
+window.app = Object.assign({}, module.exports);
 // --------- /AJAX Wrapper --------- //
