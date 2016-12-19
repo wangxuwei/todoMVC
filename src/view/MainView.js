@@ -26,8 +26,11 @@ d.register("MainView",{
     events: {
         "click; .log-off": function(){
             var view = this;
-            app.pref.set("username", "");
-            window.location.reload(true);
+            app.doPost("/logoff", {}).then(function(response){
+                if (response.success){
+                    window.location.reload(true);
+                }
+            });
         }
     }
 
@@ -37,6 +40,7 @@ d.register("MainView",{
 function showMainView(){
     var view = this;
     d.display("TodoList", d.first(view.el, ".MainView-content"));
+    var logOffEl = d.first(".log-off");
     logOffEl.style.display = 'block';
 }
 

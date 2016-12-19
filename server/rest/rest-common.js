@@ -31,9 +31,17 @@ routes.push({
 		}
 
 		if(existUser){
-			reply({success: true});
+			reply({success: true}).state('username', user.username);
 		}else{
 			reply({success: false, errorMessage: "Incorrect username or passowrd"});
 		}
+	}
+});
+
+routes.push({
+	method: 'POST',
+	path:'/logoff', 
+	handler: function (request, reply) {
+		reply({success: true}).state("username", "");
 	}
 });

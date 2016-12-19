@@ -42,12 +42,10 @@ function login(data){
     var view = this;
     var msgEl = d.first(view.el, "#error-msg");
     msgEl.innerHTML = "";
-    console.log(data);
     var message = checkLogin.call(view, data);
     if(!message){
         app.doPost("/login", data).then(function(response){
             if (response.success){
-                app.pref.set("username", data.username);
                 window.location.reload(true);
             }else{
                 message = response.errorMessage;
