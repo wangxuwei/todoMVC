@@ -1,0 +1,92 @@
+@import "./utils.pcss";
+
+.Popup{
+	@mixin fitparent;
+	z-index: 99;
+	&.modal-popup{
+		.Popup-screen{
+			background: none;
+			pointer-events: none;
+		}
+	}
+
+	.Popup-screen{
+		@mixin fitparent;
+		position: fixed;
+		background: rgba(35, 31, 32, .1);
+	}
+	.Popup-con{
+		position: absolute;
+		top: 80px;
+		left: 440px;
+		z-index: 100;
+		&:focus{
+			outline: none;
+		}
+		&.transitioning{
+			transition: transform .2s ease-in;
+		}
+	}
+	.popup-modal{
+		border: none;
+		box-shadow: none;
+		border: 4px solid #2477ba;
+		border-radius: 4px;
+		.popup-header{
+			padding: 0;
+			cursor: pointer;
+			height: 32px;
+			border: none;
+			background: #2477ba;
+			position: relative;
+			z-index: 2;
+			.modal-title{
+				position: absolute;
+				top: 4px;
+				left: 16px;
+				right: 16px;
+				max-width: 95%;
+				font-size: $font-size-large;
+				font-weight: $font-weight-light;
+				letter-spacing: .6px;
+				color: white;
+				text-align: center;
+			}
+		}
+
+		.popup-footer{
+			margin-top: 0;
+			padding: 0px 16px 16px 16px;
+			height: 64px;
+			border-top: none;
+			background: white;
+			position: relative;
+			z-index: 2;
+			&:before{
+				content: " ";
+				@mixin fitparent;
+				left:-2px;
+				right:-2px;
+				z-index: 0;
+				box-shadow: 0px -1px 3px 0px rgba(65,65,65,0.24), 0px -1px 2px 0px rgba(65,65,65,0.48);
+				display: block;
+			}
+			.btn{
+				position: relative;
+				height: 32px;
+				line-height: 16px;
+				min-width: 64px;
+				margin-top: 16px;
+				font-weight: $font-weight-light;
+			}
+			.cancel{
+				margin-right: 8px;
+			}
+		}
+
+		.popup-body{
+			line-height: 32px;
+			padding: 0px 16px 0 16px;
+		}
+	}	
+}

@@ -48,7 +48,6 @@ $font-weight-bold: 700;
 $font-weight-black: 900;
 /* --------- /Font Weight --------- */
 
-
 @define-mixin clearfix{
 	&:before,
 	&:after {
@@ -58,4 +57,9 @@ $font-weight-black: 900;
 	&:after {
 		clear: both;
 	}
+}
+
+@define-mixin fitparent{
+	position: absolute;
+	left: 0; right: 0; top: 0; bottom: 0;
 }

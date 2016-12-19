@@ -26,6 +26,11 @@ d.register("TodoList",{
 
     // (optional) bind events to this view (support selector) 
     events: {
+        "click; .item .name": function(evt){
+            var view = this; // this is the view 
+            var id = d.closest(evt.target, ".item").getAttribute("data-entity-id");
+            d.display("TodoPopup", d.first("body"), {id: id});
+        },
         "click; .btn-add": function(evt){
             var view = this; // this is the view 
             var inputEl = d.first(view.el, ".task-name");
@@ -46,7 +51,7 @@ d.register("TodoList",{
     hubEvents: {
         "taskHub": {
             // subscribe on the dataServiceHub on the topic Task and any labels "create" "update" or "delete" 
-            "Task; create, delete": function(data, info){
+            "Task; create, delete, update": function(data, info){
                 var view = this; // the this is this view object 
                 console.log("Task has been " + info.label + "d");
                 refreshItems.call(view);
