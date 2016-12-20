@@ -44,6 +44,14 @@ d.register("TodoList",{
             var targetEl = evt.target;
             var id = d.closest(targetEl, ".item").getAttribute("data-entity-id");
             taskHub.pub("Task", "delete", id);
+        },
+        "click; .btn-done": function(evt){
+            var view = this; // this is the view 
+            var targetEl = evt.target;
+            var id = d.closest(targetEl, ".item").getAttribute("data-entity-id");
+            var props = {id: id};
+            props.done = true;
+            taskHub.pub("Task", "update", props);
         }
     },
 
