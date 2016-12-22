@@ -4,6 +4,21 @@
 	margin: auto;
 	display: flex;
 	flex-direction: column;
+	&-header{
+		@mixin clearfix;
+		.navbar{
+			margin-bottom: 0px;
+		}
+		.app-logo{
+			float:left;
+			font-size: 26px;
+			margin: 8px 16px;
+		}
+		.log-off{
+			margin: 16px;
+			cursor: pointer;
+		}
+	}
 	.MainView-content{
 		display: flex;
 		flex-direction: column;
