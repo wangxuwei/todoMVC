@@ -5,7 +5,7 @@
 	display: flex;
 	flex-direction: column;
 	.add-con{
-		margin-top: 16px;
+		margin: 16px 16px 0 16px;
 		input{
 			width: 300px;
 			float:left;
@@ -18,42 +18,49 @@
 
 	.items-con{
 		flex: 1;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-content: flex-start;
 		margin: 24px 0;
-		border: 1px solid #ccc;
-		border-radius: 4px;
 		.item{
-			border-top: 1px solid #ccc;
-			&:first-child{
-				border-top: none;
-			}
+			border: 1px solid #ccc;
+			width: 216px;
+			height: 100px;
+			margin: 16px;
+			display: flex;
+			flex-direction: column;
 			&:hover{
 				color: $primary-dark;
 			}
-			@mixin clearfix;
 			.name{
+				flex: 1;
 				cursor: pointer;
 				margin-left: 16px;
 				display:block;
 				line-height: 32px;
-				margin-right: 160px;
 			}
-			.btn{
-				float:right;
-				height: 24px;
-				line-height: 22px;
-				padding: 0px 4px;
-				margin: 4px 16px;
-				text-align:center;
-			}
-			.status-con{
-				float:right;
-				.status-label{
-					display: inline-block;
+			.bottom-con{
+				flex: 1;
+				padding-top: 16px;
+				.btn{
+					float:right;
 					height: 24px;
 					line-height: 22px;
 					padding: 0px 4px;
 					margin: 4px 16px;
-					text-align: center;
+					text-align:center;
+				}
+				.status-con{
+					float:right;
+					.status-label{
+						display: inline-block;
+						height: 24px;
+						line-height: 22px;
+						padding: 0px 4px;
+						margin: 4px 16px;
+						text-align: center;
+					}
 				}
 			}
 		}

@@ -13,15 +13,17 @@
 <script id="TodoList-items" type="text/html">
 	{{#each items}}
 		<div class="item" data-entity-id="{{id}}">
-			<span class="btn btn-danger btn-delete">Delete</span>
-			<span class="status-con">
-				{{#if done}}
-					<span class="status-label">Done</span>
-				{{else}}
-					<span class="btn btn-default btn-done">Done</span>
-				{{/if}}
-			</span>
 			<span class="name">{{name}}</span>
+			<div class="bottom-con">
+				<span class="btn btn-danger btn-delete">Delete</span>
+				<span class="status-con">
+					{{#if done}}
+						<span class="status-label">Done</span>
+					{{else}}
+						<span class="btn btn-default btn-done">Done</span>
+					{{/if}}
+				</span>
+			</div>
 		</div>
 	{{/each}}
 </script>
