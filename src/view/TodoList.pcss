@@ -30,19 +30,24 @@
 			margin: 16px;
 			display: flex;
 			flex-direction: column;
-			&:hover{
-				color: $primary-dark;
-			}
-			.name{
+			.top-con{
 				flex: 1;
-				cursor: pointer;
-				margin-left: 16px;
-				display:block;
-				line-height: 32px;
+				.name{
+					cursor: pointer;
+					margin-left: 16px;
+					display:block;
+					line-height: 32px;
+					&:hover{
+						color: $primary-dark;
+					}
+				}
+			}
+			.mid-con{
+				flex: 1;
+				padding: 4px 16px;
 			}
 			.bottom-con{
 				flex: 1;
-				padding-top: 16px;
 				.btn{
 					float:right;
 					height: 24px;
@@ -53,14 +58,6 @@
 				}
 				.status-con{
 					float:right;
-					.status-label{
-						display: inline-block;
-						height: 24px;
-						line-height: 22px;
-						padding: 0px 4px;
-						margin: 4px 16px;
-						text-align: center;
-					}
 				}
 			}
 		}

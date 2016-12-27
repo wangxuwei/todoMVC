@@ -11,19 +11,23 @@
 </script>
 
 <script id="TodoList-items" type="text/html">
-	{{#each items}}
-		<div class="item" data-entity-id="{{id}}">
-			<span class="name">{{name}}</span>
-			<div class="bottom-con">
-				<span class="btn btn-danger btn-delete">Delete</span>
-				<span class="status-con">
-					{{#if done}}
-						<span class="status-label">Done</span>
-					{{else}}
-						<span class="btn btn-default btn-done">Done</span>
-					{{/if}}
-				</span>
-			</div>
+	<div class="item" data-entity-id="{{item.id}}">
+		<div class="top-con">
+			<span class="name">{{item.name}}</span>
 		</div>
-	{{/each}}
+		<div class="mid-con">
+			Status: <span class="status">{{item.status}}</span>
+		</div>
+		<div class="bottom-con">
+			<span class="btn btn-danger btn-delete">Delete</span>
+			<span class="status-con">
+				{{#check item.status "==" "Init"}}
+					<span class="btn btn-default btn-doing">Doing</span>
+				{{/check}}
+				{{#check item.status "==" "Doing"}}
+					<span class="btn btn-default btn-done">Done</span>
+				{{/check}}
+			</span>
+		</div>
+	</div>
 </script>

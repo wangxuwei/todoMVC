@@ -45,12 +45,20 @@ d.register("TodoList",{
             var id = d.closest(targetEl, ".item").getAttribute("data-entity-id");
             taskHub.pub("Task", "delete", id);
         },
+        "click; .btn-doing": function(evt){
+            var view = this; // this is the view 
+            var targetEl = evt.target;
+            var id = d.closest(targetEl, ".item").getAttribute("data-entity-id");
+            var props = {id: id};
+            props.status = "Doing";
+            taskHub.pub("Task", "update", props);
+        },
         "click; .btn-done": function(evt){
             var view = this; // this is the view 
             var targetEl = evt.target;
             var id = d.closest(targetEl, ".item").getAttribute("data-entity-id");
             var props = {id: id};
-            props.done = true;
+            props.status = "Done";
             taskHub.pub("Task", "update", props);
         }
     },
@@ -73,8 +81,14 @@ d.register("TodoList",{
 function refreshItems(){
     var view = this;
     var conEl = d.first(view.el, ".items-con");
+    d.empty(conEl);
     taskHub.list().then(function(data){
-        var html = render("TodoList-items", {items: data});
-        conEl.innerHTML = html;
+        data = data || [];
+        for(var i = 0; i < data.length; i++){
+            var item = data[i];
+            item.status = item.status ? item.status : "Init";
+            var html = render("TodoList-items", {item: item});
+            conEl.innerHTML = conEl.innerHTML + html;
+        }
     });
 }

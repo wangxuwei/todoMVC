@@ -11,8 +11,18 @@
 					<input name="name" type="text" class="form-control c-control dx dx-name"  autofocus placeholder="Enter Task Name">
 				</div>
 				<div class="form-group c-ctl-group state-group">
-					<div class="check-label">Is Done: </div>
-					<input name="done" type="checkbox" class="dx dx-done" />
+					<div class="check-label">Status: </div>
+					<div class="radios-con">
+						<div class="radio-item">
+							<input name="status" type="radio" class="dx dx-status" value="Init"/> Init
+						</div>
+						<div class="radio-item">
+							<input name="status" type="radio" class="dx dx-status" value="Doing" /> Doing
+						</div>
+						<div class="radio-item">
+							<input name="status" type="radio" class="dx dx-status" value="Done" /> Done
+						</div>
+					</div>
 				</div>
 				<div class="form-group c-ctl-group">
 					<div class="control-label">Task Note: </div>

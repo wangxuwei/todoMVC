@@ -39,13 +39,11 @@ function getTaskData(){
     var view = this;
     var props = d.pull(view.el);
     props.id = view.objId;
-    if(!props.done){
-        props.done = false;
-    }
     return props;
 }
 
 function loadTask(task){
     var view = this;
+    task.status = task.status ? task.status : "Init";
     d.push(view.el, task);
 }
