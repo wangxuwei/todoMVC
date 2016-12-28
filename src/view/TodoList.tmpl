@@ -18,6 +18,9 @@
 		<div class="mid-con">
 			Status: <span class="status">{{item.status}}</span>
 		</div>
+		<div class="date-con">
+			Last Update: <span class="date">{{item.lastUpdate}}</span>
+		</div>
 		<div class="bottom-con">
 			<span class="btn btn-danger btn-delete">Delete</span>
 			{{#check item.status "==" "Init"}}

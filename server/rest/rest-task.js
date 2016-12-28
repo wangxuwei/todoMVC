@@ -1,5 +1,6 @@
 var utils = require('../utils.js');
 var daos = require('../dao/daos.js');
+var moment = require('moment');
 
 var run = utils.run;
 
@@ -37,7 +38,9 @@ routes.push({
 	handler: function (request, reply) {
 		var taskDao = daos.task;
 		var entity = JSON.parse(request.payload.entity);
+		entity = Object.assign({}, entity, {lastUpdate: moment().format("YYYY-MM-DD HH:mm:ss")});
 		var entityId = taskDao.create(entity);
+		console.log(moment());
 		reply({id: entityId});
 	}	
 });
@@ -48,6 +51,7 @@ routes.push({
 	handler: function (request, reply) {
 		var taskDao = daos.task;
 		var entity = JSON.parse(request.payload.entity);
+		entity = Object.assign({}, entity, {lastUpdate: moment().format("YYYY-MM-DD HH:mm:ss")});
 		var entityId = taskDao.update(entity);
 		reply(entity);
 	}	
