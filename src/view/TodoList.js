@@ -33,11 +33,7 @@ d.register("TodoList",{
         },
         "click; .btn-add": function(evt){
             var view = this; // this is the view 
-            var inputEl = d.first(view.el, ".task-name");
-            if(inputEl.value){
-                taskHub.pub("Task", "create", {name: inputEl.value});
-                inputEl.value = "";
-            }
+            d.display("TodoPopup", d.first("body"));
         },
         "click; .btn-delete": function(evt){
             var view = this; // this is the view 

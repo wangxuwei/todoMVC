@@ -23,7 +23,11 @@ d.register("TodoPopup",{
     events: {
         "click; .btn.save": function(){
             var view = this;
-            taskHub.pub("Task", "update", getTaskData.call(view));
+            if(view.objId){
+                taskHub.pub("Task", "update", getTaskData.call(view));
+            }else{
+                taskHub.pub("Task", "create", getTaskData.call(view));
+            }
             d.remove(view.el);
         },
         "click; .btn.cancel": function(){
@@ -44,6 +48,7 @@ function getTaskData(){
 
 function loadTask(task){
     var view = this;
-    task.status = task.status ? task.status : "Init";
+    task.name = task.name || "";
+    task.status = task.status || "Init";
     d.push(view.el, task);
 }
