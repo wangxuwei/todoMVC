@@ -18,7 +18,16 @@ routes.push({
 	path:'/task/list', 
 	handler: function (request, reply) {
 		var taskDao = daos.task;
-		reply(taskDao.list());
+		var name = request.url.query.name;
+		var list = taskDao.list();
+		var results = [];
+		for(var i = 0; i < list.length; i++){
+			var taskName = list[i].name || "";
+			if(!name || taskName.indexOf(name) > -1){
+				results.push(list[i]);
+			}
+		}
+		reply(results);
 	}	
 });
 

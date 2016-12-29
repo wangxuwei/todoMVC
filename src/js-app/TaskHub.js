@@ -26,8 +26,8 @@ taskHub.sub("Task", "delete", function(data, info){
 	return app.doPost("/task/delete", {id: data});
 });
 
-taskHub.list = function(){
-	return app.doGet("/task/list");
+taskHub.list = function(name){
+	return app.doGet("/task/list", {name: name});
 }
 
 taskHub.get = function(id){

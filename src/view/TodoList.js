@@ -56,6 +56,12 @@ d.register("TodoList",{
             var props = {id: id};
             props.status = "Done";
             taskHub.pub("Task", "update", props);
+        },
+        "keyup; .task-name": function(evt){
+            var view = this;
+            if(evt.keyCode == 13){
+                refreshItems.call(view);
+            }
         }
     },
 
@@ -77,8 +83,9 @@ d.register("TodoList",{
 function refreshItems(){
     var view = this;
     var conEl = d.first(view.el, ".items-con");
+    var inputEl = d.first(view.el, ".task-name");
     d.empty(conEl);
-    taskHub.list().then(function(data){
+    taskHub.list(inputEl.value).then(function(data){
         data = data || [];
         for(var i = 0; i < data.length; i++){
             var item = data[i];
